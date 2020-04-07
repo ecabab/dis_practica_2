@@ -7,7 +7,7 @@ public class Contacto {
 	private String empresa;
 	private String telefono;
 	private String email;
-	private String dirrecion;
+	private String direccion;
 	
 	
 	public Contacto() {
@@ -15,7 +15,7 @@ public class Contacto {
 	}
 	
 	
-	public Contacto(int id, String nombre, String apellidos, String empresa, String telefono, String email, String dirrecion) {
+	public Contacto(int id, String nombre, String apellidos, String empresa, String telefono, String email, String direccion) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -23,7 +23,7 @@ public class Contacto {
 		this.empresa = empresa;
 		this.telefono = telefono;
 		this.email = email;
-		this.dirrecion = dirrecion;
+		this.direccion = direccion;
 	}
 	
 	public String getNombre() {
@@ -56,11 +56,11 @@ public class Contacto {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getDirrecion() {
-		return dirrecion;
+	public String getDireccion() {
+		return direccion;
 	}
-	public void setDirrecion(String dirrecion) {
-		this.dirrecion = dirrecion;
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
 	public int getId() {
 		return id;

@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "nombre": "Emilio",
+    "apellidos": "Caba",
+    "empresa": "UFV",
+    "telefono": "673847392",
+    "email": "emilio@gmail.com",
+    "direccion": "Madrid"
+  },
+  {
+    "id": 2,
+    "nombre": "Jorge",
+    "apellidos": "Aguirre",
+    "empresa": "UFV",
+    "telefono": "637283948",
+    "email": "jorge@gmail.com",
+    "direccion": "Madrid"
+  },
+  {
+    "id": 3,
+    "nombre": "Jaime",
+    "apellidos": "Martínez",
+    "empresa": "UFV",
+    "telefono": "639283409",
+    "email": "jaime@gmail.com",
+    "direccion": "Madrid"
+  },
+  {
+    "id": 4,
+    "nombre": "Gonzalo",
+    "apellidos": "Gil",
+    "empresa": "UFV",
+    "telefono": "638493827",
+    "email": "gonzalo@gmail.com",
+    "direccion": "Madrid"
+  },
+  {
+    "id": 5,
+    "nombre": "Laura",
+    "apellidos": "Caba",
+    "empresa": "CUCC",
+    "telefono": "637482938",
+    "email": "laura@gmail.com",
+    "direccion": "Madrid"
+  }
+]
