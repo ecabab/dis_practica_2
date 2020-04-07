@@ -1,7 +1,7 @@
 package com.ufv.practica2.agenda;
 
 public class Contacto {
-
+	private int	id;
 	private String nombre;
 	private String apellidos;
 	private String empresa;
@@ -15,8 +15,9 @@ public class Contacto {
 	}
 	
 	
-	public Contacto(String nombre, String apellidos, String empresa, String telefono, String email, String dirrecion) {
+	public Contacto(int id, String nombre, String apellidos, String empresa, String telefono, String email, String dirrecion) {
 		super();
+		this.id = id;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.empresa = empresa;
@@ -24,6 +25,7 @@ public class Contacto {
 		this.email = email;
 		this.dirrecion = dirrecion;
 	}
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -59,6 +61,12 @@ public class Contacto {
 	}
 	public void setDirrecion(String dirrecion) {
 		this.dirrecion = dirrecion;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	

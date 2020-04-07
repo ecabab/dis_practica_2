@@ -68,6 +68,15 @@ public class Agenda {
         }
 		
 	}
+	public void createContacto(Contacto contacto) {
+		this.contactos.add(contacto);
+	}
+	public void deleteContacto(Contacto contacto, int index) {
+		this.contactos.remove(index);
+	}
+	public void updateContacto(Contacto contacto, int index) {
+		this.contactos.set(index, contacto);
+	}
 	
 	
 }
