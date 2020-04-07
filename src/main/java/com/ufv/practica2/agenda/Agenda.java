@@ -5,78 +5,66 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 public class Agenda {
 	
-	private ArrayList<Contacto> contactos;
-	
+	public ArrayList<Contacto> contactos;
 	
 	public Agenda() {
-		
+		this.contactos = new ArrayList<Contacto>();
 	}
 
-
-	public Agenda(ArrayList<Contacto> contactos) {
+	public Agenda(final ArrayList<Contacto> contactos) {
 		super();
 		this.contactos = contactos;
 	}
-
 
 	public ArrayList<Contacto> getContactos() {
 		return contactos;
 	}
 
-
-	public void setContactos(ArrayList<Contacto> contactos) {
+	public void setContactos(final ArrayList<Contacto> contactos) {
 		this.contactos = contactos;
 	}
 	
-	public Agenda ReadJSON() {
-		 
-		Gson gson = new Gson();
-		 
-		Agenda agenda = new Agenda();
+	public void readJSON() {
+		final Gson gson = new Gson();
 
 	    try (Reader reader = new FileReader("agenda.json")) {
 
-	    	agenda = gson.fromJson(reader, Agenda.class);
-	        return agenda;
+	    	this.contactos = gson.fromJson(reader, new TypeToken<List<Contacto>>(){}.getType());
 
-	     } catch (IOException e) {
-	    	 
+	     } catch (final IOException e) {
 	    	 e.printStackTrace();
-	         return agenda;
-	           
-	     }
-	        
+	     }     
 	}
-	public void GenerateJSON(Agenda agenda) {
-		
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+	public void generateJSON() {
+		final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		
 		try (FileWriter writer = new FileWriter("agenda.json")) {
 			
-            gson.toJson(agenda, writer);
+            gson.toJson(this.contactos, writer);
             
-        } catch (IOException e) {
-        	
-            e.printStackTrace();
-            
+        } catch (final IOException e) {
+            e.printStackTrace(); 
         }
-		
 	}
-	public void createContacto(Contacto contacto) {
+
+	public void createContacto(final Contacto contacto) {
 		this.contactos.add(contacto);
 	}
-	public void deleteContacto(Contacto contacto, int index) {
+
+	public void deleteContacto(final Contacto contacto, final int index) {
 		this.contactos.remove(index);
 	}
-	public void updateContacto(Contacto contacto, int index) {
+
+	public void updateContacto(final Contacto contacto, final int index) {
 		this.contactos.set(index, contacto);
 	}
-	
-	
 }

@@ -9,3 +9,15 @@
   @include mytheme;
 
 }
+
+.contacts-grid {
+	.v-grid-header {
+		color: white;
+		.v-grid-cell {
+			background-color: #33AFFF;
+			background-image: none;
+			border-right: none;
+			border-left: none;
+		}
+	}
+}
