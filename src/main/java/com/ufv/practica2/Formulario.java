@@ -123,8 +123,6 @@ public class Formulario extends Window {
     }
 
     private boolean checkFields(String nombre, String telefono) {
-        System.out.println(nombre);
-        System.out.println(telefono);
         if(!nombre.isEmpty() && !telefono.isEmpty()) {
             return true;
         }

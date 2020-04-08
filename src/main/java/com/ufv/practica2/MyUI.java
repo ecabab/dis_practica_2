@@ -14,6 +14,8 @@ import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.Window.CloseEvent;
+import com.vaadin.ui.Window.CloseListener;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser
@@ -42,6 +44,9 @@ public class MyUI extends UI {
     verticalLayout.setWidth("100%");
     verticalLayout.setHeight("100%");
 
+
+    Grid<Contacto> contactosGrid = new Grid<>();
+
     // Cabecera
     final HorizontalLayout hlHeader = new HorizontalLayout();
     Label titulo = new Label("Agenda de contactos");
@@ -50,11 +55,21 @@ public class MyUI extends UI {
       int windowWidth = getPage().getBrowserWindowWidth();
       int windowHeight = getPage().getBrowserWindowHeight();
 
-      Formulario form = new Formulario("Creando contacto - ID:", agenda, agenda.contactos.get(agenda.contactos.size()-1).getId() + 1);
+      Formulario form = new Formulario("Creando contacto - ID:", agenda,
+          agenda.contactos.get(agenda.contactos.size() - 1).getId() + 1);
       form.setHeight("300px");
       form.setWidth("400px");
-      form.setPosition(windowWidth/2 - 200, windowHeight/2 - 150);
+      form.setPosition(windowWidth / 2 - 200, windowHeight / 2 - 150);
       form.setModal(true);
+
+      form.addCloseListener(new CloseListener() {
+        private static final long serialVersionUID = 1L;
+
+        @Override
+        public void windowClose(CloseEvent e) {
+          contactosGrid.setItems(agenda.contactos);
+        }
+      });
 
       UI.getCurrent().addWindow(form);
     });
@@ -62,7 +77,6 @@ public class MyUI extends UI {
     hlHeader.addComponents(titulo, createBtn);
 
     // Tabla de contactos
-    Grid<Contacto> contactosGrid = new Grid<>();
     contactosGrid.setItems(agenda.contactos);
 
     contactosGrid.addComponentColumn(contacto -> new Label(Integer.toString(contacto.getId()))).setCaption("##");
@@ -90,14 +104,43 @@ public class MyUI extends UI {
         Formulario form = new Formulario("Editando contacto - ID:", agenda, contacto);
         form.setHeight("300px");
         form.setWidth("400px");
-        form.setPosition(windowWidth/2 - 200, windowHeight/2 - 150);
+        form.setPosition(windowWidth / 2 - 200, windowHeight / 2 - 150);
         form.setModal(true);
+
+        form.addCloseListener(new CloseListener() {
+          private static final long serialVersionUID = 1L;
+
+          @Override
+          public void windowClose(CloseEvent e) {
+            contactosGrid.setItems(agenda.contactos);
+          }
+        });
 
         UI.getCurrent().addWindow(form);
       });
 
       Button delBtn = new Button("Borrar");
-      
+      delBtn.addClickListener(click -> {
+        int windowWidth = getPage().getBrowserWindowWidth();
+        int windowHeight = getPage().getBrowserWindowHeight();
+
+        Alerta alerta = new Alerta("Borrar Contacto", agenda, contacto);
+        alerta.setHeight("150px");
+        alerta.setWidth("450px");
+        alerta.setPosition(windowWidth / 2 - 225, windowHeight / 2 - 75);
+        alerta.setModal(true);
+
+        alerta.addCloseListener(new CloseListener() {
+          private static final long serialVersionUID = 1L;
+
+          @Override
+          public void windowClose(CloseEvent e) {
+            contactosGrid.setItems(agenda.contactos);
+          }
+        });
+
+        UI.getCurrent().addWindow(alerta);
+      });
 
       horLayout.addComponents(editBtn, delBtn);
 

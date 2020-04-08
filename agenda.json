@@ -34,23 +34,5 @@
     "telefono": "638493827",
     "email": "gonzalo@gmail.com",
     "direccion": "Madrid"
-  },
-  {
-    "id": 5,
-    "nombre": "Laura",
-    "apellidos": "Caba",
-    "empresa": "CUCC",
-    "telefono": "637482938",
-    "email": "laura@gmail.com",
-    "direccion": "Madrid"
-  },
-  {
-    "id": 6,
-    "nombre": "Alberto",
-    "apellidos": "Jimenez",
-    "empresa": "perto",
-    "telefono": "638293847",
-    "email": "alberto@gmail.com",
-    "direccion": "Madrid"
   }
 ]
