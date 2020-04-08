@@ -19,16 +19,16 @@ public class Agenda {
 		this.contactos = new ArrayList<Contacto>();
 	}
 
-	public Agenda(final ArrayList<Contacto> contactos) {
+	public Agenda(ArrayList<Contacto> contactos) {
 		super();
 		this.contactos = contactos;
 	}
 
 	public ArrayList<Contacto> getContactos() {
-		return contactos;
+		return this.contactos;
 	}
 
-	public void setContactos(final ArrayList<Contacto> contactos) {
+	public void setContactos(ArrayList<Contacto> contactos) {
 		this.contactos = contactos;
 	}
 	
@@ -39,7 +39,7 @@ public class Agenda {
 
 	    	this.contactos = gson.fromJson(reader, new TypeToken<List<Contacto>>(){}.getType());
 
-	     } catch (final IOException e) {
+	     } catch (IOException e) {
 	    	 e.printStackTrace();
 	     }     
 	}
@@ -51,20 +51,34 @@ public class Agenda {
 			
             gson.toJson(this.contactos, writer);
             
-        } catch (final IOException e) {
+        } catch (IOException e) {
             e.printStackTrace(); 
         }
 	}
 
-	public void createContacto(final Contacto contacto) {
+	public void createContacto(Contacto contacto) {
 		this.contactos.add(contacto);
+		this.generateJSON();
 	}
 
-	public void deleteContacto(final Contacto contacto, final int index) {
-		this.contactos.remove(index);
-	}
-
-	public void updateContacto(final Contacto contacto, final int index) {
+	public void updateContacto(Contacto contacto) {
+		int index = this.getIndexOfContact(contacto);
 		this.contactos.set(index, contacto);
+		this.generateJSON();
+	}
+
+	public void deleteContacto(Contacto contacto) {
+		int index = this.getIndexOfContact(contacto);
+		this.contactos.remove(index);
+		this.generateJSON();
+	}
+
+	public int getIndexOfContact(Contacto contacto) {
+		for(int i = 0; i < this.contactos.size(); i++) {
+			if(this.contactos.get(i).getId() == contacto.getId()) {
+				return i;
+			}
+		}
+		return -1;
 	}
 }

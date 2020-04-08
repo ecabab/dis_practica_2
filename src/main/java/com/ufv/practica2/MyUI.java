@@ -36,13 +36,30 @@ public class MyUI extends UI {
   protected void init(VaadinRequest vaadinRequest) {
     Agenda agenda = new Agenda();
     agenda.readJSON();
-    // agenda.contactos.add(new Contacto(1, "Emilio", "Caba", "UFV", "673847392",
-    // "emilio@gmail.com", "Madrid"));
 
-    // Cabecera
+    // Grid
     final VerticalLayout verticalLayout = new VerticalLayout();
     verticalLayout.setWidth("100%");
     verticalLayout.setHeight("100%");
+
+    // Cabecera
+    final HorizontalLayout hlHeader = new HorizontalLayout();
+    Label titulo = new Label("Agenda de contactos");
+    Button createBtn = new Button("Crear Contacto");
+    createBtn.addClickListener(click -> {
+      int windowWidth = getPage().getBrowserWindowWidth();
+      int windowHeight = getPage().getBrowserWindowHeight();
+
+      Formulario form = new Formulario("Creando contacto - ID:", agenda, agenda.contactos.get(agenda.contactos.size()-1).getId() + 1);
+      form.setHeight("300px");
+      form.setWidth("400px");
+      form.setPosition(windowWidth/2 - 200, windowHeight/2 - 150);
+      form.setModal(true);
+
+      UI.getCurrent().addWindow(form);
+    });
+
+    hlHeader.addComponents(titulo, createBtn);
 
     // Tabla de contactos
     Grid<Contacto> contactosGrid = new Grid<>();
@@ -67,9 +84,21 @@ public class MyUI extends UI {
 
       Button editBtn = new Button("Editar");
       editBtn.addClickListener(click -> {
-        System.out.print(contacto.getNombre());
+        int windowWidth = getPage().getBrowserWindowWidth();
+        int windowHeight = getPage().getBrowserWindowHeight();
+
+        Formulario form = new Formulario("Editando contacto - ID:", agenda, contacto);
+        form.setHeight("300px");
+        form.setWidth("400px");
+        form.setPosition(windowWidth/2 - 200, windowHeight/2 - 150);
+        form.setModal(true);
+
+        UI.getCurrent().addWindow(form);
       });
+
       Button delBtn = new Button("Borrar");
+      
+
       horLayout.addComponents(editBtn, delBtn);
 
       return horLayout;
@@ -80,7 +109,7 @@ public class MyUI extends UI {
     contactosGrid.setHeight("100%");
     contactosGrid.setRowHeight(40);
 
-    verticalLayout.addComponents(contactosGrid);
+    verticalLayout.addComponents(hlHeader, contactosGrid);
 
     setContent(verticalLayout);
   }
