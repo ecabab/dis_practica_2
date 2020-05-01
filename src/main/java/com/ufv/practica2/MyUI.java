@@ -8,6 +8,7 @@ import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
+import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Grid;
 import com.vaadin.ui.HorizontalLayout;
@@ -42,7 +43,6 @@ public class MyUI extends UI {
     // Grid
     final VerticalLayout verticalLayout = new VerticalLayout();
     verticalLayout.setWidth("100%");
-    verticalLayout.setHeight("100%");
 
 
     Grid<Contacto> contactosGrid = new Grid<>();
@@ -75,6 +75,10 @@ public class MyUI extends UI {
     });
 
     hlHeader.addComponents(titulo, createBtn);
+
+    // Header styles
+    hlHeader.setStyleName("header");
+    createBtn.setStyleName("create-btn");
 
     // Tabla de contactos
     contactosGrid.setItems(agenda.contactos);

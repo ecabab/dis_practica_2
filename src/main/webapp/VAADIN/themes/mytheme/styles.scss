@@ -10,6 +10,14 @@
 
 }
 
+.header {
+	width: 100%;
+	
+	.v-slot-create-btn {
+		float: right;
+	}
+}
+
 .contacts-grid {
 	.v-grid-header {
 		color: white;

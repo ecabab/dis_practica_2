@@ -15076,6 +15076,14 @@ div.v-layout.v-horizontal.v-widget {
 	overflow: hidden;
 }
 
+.header {
+	width: 100%;
+}
+
+.header .v-slot-create-btn {
+	float: right;
+}
+
 .contacts-grid .v-grid-header {
 	color: white;
 }

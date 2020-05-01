@@ -1,8 +1,11 @@
-package com.ufv.pruebapractica;
+package com.ufv;
 
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+
+import com.ufv.practica2.agenda.Agenda;
+import com.ufv.practica2.agenda.Contacto;
 
 import org.junit.Before;
 import org.junit.Test;
