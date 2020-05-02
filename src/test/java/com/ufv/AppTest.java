@@ -78,7 +78,7 @@ public class AppTest {
 	@Test
 	public void testLeerJSON() {
 		agenda.readJSON();
-		assertEquals(0,agenda.contactos.size());
+		assertEquals(0, agenda.contactos.size());
 		agenda.createContacto(contacto1);
 		Agenda agenda2 = new Agenda();
 		agenda2.readJSON();
