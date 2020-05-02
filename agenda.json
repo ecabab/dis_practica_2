@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "id": 1,
+    "nombre": "Emilio",
+    "apellidos": "Caba ",
+    "empresa": "UFV",
+    "telefono": "673827364",
+    "email": "emilio@gmail.com",
+    "direccion": "Madrid"
+  },
+  {
+    "id": 2,
+    "nombre": "Jaime",
+    "apellidos": "Martínez",
+    "empresa": "UFV",
+    "telefono": "647382738",
+    "email": "jaime@gmail.com",
+    "direccion": "Madrid"
+  }
+]

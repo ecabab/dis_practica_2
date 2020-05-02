@@ -55,7 +55,8 @@ public class MyUI extends UI {
       int windowHeight = getPage().getBrowserWindowHeight();
 
       Formulario form = new Formulario("Creando contacto - ID:", agenda,
-          agenda.contactos.get(agenda.contactos.size() - 1).getId() + 1);
+          agenda.getNextIndex());
+      
       form.setHeight("300px");
       form.setWidth("400px");
       form.setPosition(windowWidth / 2 - 200, windowHeight / 2 - 150);
