@@ -77,12 +77,11 @@ public class AppTest {
 	
 	@Test
 	public void testLeerJSON() {
-		agenda.readJSON();
-		assertEquals(0, agenda.contactos.size());
 		agenda.createContacto(contacto1);
-		Agenda agenda2 = new Agenda();
-		agenda2.readJSON();
-		assertEquals("Manuel",agenda2.contactos.get(0).getNombre());
+		agenda.generateJSON();
+
+		agenda.readJSON();
+		assertEquals(1, agenda.contactos.size());
 	}
 	
 	@Test
