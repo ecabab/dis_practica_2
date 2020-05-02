@@ -81,4 +81,13 @@ public class Agenda {
 		}
 		return -1;
 	}
+
+	public int getNextIndex() {
+		if(this.contactos.size() == 0) {
+			return 1;
+		}
+		else {
+			return this.contactos.get(this.contactos.size() - 1).getId() + 1;
+		}
+	}
 }
