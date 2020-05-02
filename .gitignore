@@ -1,1 +1,8 @@
+# Carpetas
 /target/
+.settings/
+.vscode/
+
+# Ficheros
+.project
+.classpath
