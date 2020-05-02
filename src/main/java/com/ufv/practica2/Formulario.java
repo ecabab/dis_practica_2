@@ -2,8 +2,11 @@ package com.ufv.practica2;
 
 import com.ufv.practica2.agenda.Agenda;
 import com.ufv.practica2.agenda.Contacto;
+import com.vaadin.server.Page;
+import com.vaadin.shared.Position;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.GridLayout;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.Window;
 
@@ -17,9 +20,8 @@ public class Formulario extends Window {
     public Formulario(String header, Agenda agenda, int lastIndex) {
         super(header + Integer.toString(lastIndex));
 
-        GridLayout form = new GridLayout();
-        form.setColumns(2);
-        form.setRows(4);
+        GridLayout form = new GridLayout(2, 4);
+        form.setSpacing(true);
 
         final TextField nombreTextField = new TextField();
         nombreTextField.setCaption("Nombre");
@@ -52,8 +54,15 @@ public class Formulario extends Window {
                                         empresaTextField.getValue(), telefonoTextField.getValue(), emailTextField.getValue(),
                                         direccionTextField.getValue());
                 agenda.createContacto(newContacto);
+                close();
             }
-            close();
+            else {
+                Notification not = new Notification("Error",
+                "Los campos 'Nombre' y 'Teléfono' son obligatorios",
+                Notification.Type.TRAY_NOTIFICATION);
+                not.setPosition(Position.BOTTOM_CENTER);
+                not.show(Page.getCurrent());
+            }
         });
         form.addComponent(saveBtn, 0, 3);
 
@@ -63,14 +72,16 @@ public class Formulario extends Window {
 
         // Open it in the UI
         setContent(form);
+
+        // Form styles
+        form.setStyleName("form");
     }
 
     public Formulario(String header, Agenda agenda, Contacto contacto) {
         super(header + Integer.toString(contacto.getId()));
 
-        GridLayout form = new GridLayout();
-        form.setColumns(2);
-        form.setRows(4);
+        GridLayout form = new GridLayout(2, 4);
+        form.setSpacing(true);
 
         final TextField nombreTextField = new TextField();
         nombreTextField.setCaption("Nombre");
@@ -109,8 +120,15 @@ public class Formulario extends Window {
                                         empresaTextField.getValue(), telefonoTextField.getValue(), emailTextField.getValue(),
                                         direccionTextField.getValue());
                 agenda.updateContacto(newContacto);
+                close();
             }
-            close();
+            else {
+                Notification not = new Notification("Error",
+                "Los campos 'Nombre' y 'Teléfono' son obligatorios",
+                Notification.Type.TRAY_NOTIFICATION);
+                not.setPosition(Position.BOTTOM_CENTER);
+                not.show(Page.getCurrent());
+            }
         });
         form.addComponent(saveBtn, 0, 3);
 
@@ -120,6 +138,9 @@ public class Formulario extends Window {
 
         // Open it in the UI
         setContent(form);
+
+        // Form styles
+        form.setStyleName("form");
     }
 
     private boolean checkFields(String nombre, String telefono) {

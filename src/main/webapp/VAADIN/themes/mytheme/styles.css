@@ -15076,21 +15076,52 @@ div.v-layout.v-horizontal.v-widget {
 	overflow: hidden;
 }
 
+.v-slot-header {
+	height: 40px !important;
+}
+
 .header {
 	width: 100%;
+}
+
+.header .title {
+	font-size: 25px;
+	font-weight: bold;
 }
 
 .header .v-slot-create-btn {
 	float: right;
 }
 
+.v-slot-contacts-grid {
+	height: 95% !important;
+}
+
+.v-slot-contacts-grid .contacts-grid {
+	height: 100% !important;
+}
+
 .contacts-grid .v-grid-header {
 	color: white;
+	font-weight: bold;
 }
 
 .contacts-grid .v-grid-header .v-grid-cell {
-	background-color: #33AFFF;
+	background-color: #3b5998;
 	background-image: none;
 	border-right: none;
 	border-left: none;
+}
+
+.contacts-grid .edit-btn, .contacts-grid .del-btn {
+	height: 28px !important;
+	padding: 0 10px !important;
+}
+
+.form {
+	width: 400px !important;
+}
+
+.form .v-gridlayout-slot {
+	margin-left: 12px;
 }
