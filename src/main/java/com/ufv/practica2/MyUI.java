@@ -6,6 +6,7 @@ import com.ufv.practica2.agenda.Agenda;
 import com.ufv.practica2.agenda.Contacto;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.icons.VaadinIcons;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Button;
@@ -42,14 +43,14 @@ public class MyUI extends UI {
     // Grid
     final VerticalLayout verticalLayout = new VerticalLayout();
     verticalLayout.setWidth("100%");
-
+    verticalLayout.setHeight("100%");
 
     Grid<Contacto> contactosGrid = new Grid<>();
 
     // Cabecera
     final HorizontalLayout hlHeader = new HorizontalLayout();
-    Label titulo = new Label("Agenda de contactos");
-    Button createBtn = new Button("Crear Contacto");
+    Label titulo = new Label("Agenda de Contactos");
+    Button createBtn = new Button("Añadir Contacto", VaadinIcons.PLUS_SQUARE_LEFT_O);
     createBtn.addClickListener(click -> {
       int windowWidth = getPage().getBrowserWindowWidth();
       int windowHeight = getPage().getBrowserWindowHeight();
@@ -57,8 +58,8 @@ public class MyUI extends UI {
       Formulario form = new Formulario("Creando contacto - ID:", agenda,
           agenda.getNextIndex());
       
-      form.setHeight("300px");
-      form.setWidth("400px");
+      form.setHeight("310px");
+      form.setWidth("410px");
       form.setPosition(windowWidth / 2 - 200, windowHeight / 2 - 150);
       form.setModal(true);
 
@@ -78,6 +79,7 @@ public class MyUI extends UI {
 
     // Header styles
     hlHeader.setStyleName("header");
+    titulo.setStyleName("title");
     createBtn.setStyleName("create-btn");
 
     // Tabla de contactos
@@ -100,14 +102,14 @@ public class MyUI extends UI {
     contactosGrid.addComponentColumn(contacto -> {
       HorizontalLayout horLayout = new HorizontalLayout();
 
-      Button editBtn = new Button("Editar");
+      Button editBtn = new Button("Editar", VaadinIcons.EDIT);
       editBtn.addClickListener(click -> {
         int windowWidth = getPage().getBrowserWindowWidth();
         int windowHeight = getPage().getBrowserWindowHeight();
 
         Formulario form = new Formulario("Editando contacto - ID:", agenda, contacto);
-        form.setHeight("300px");
-        form.setWidth("400px");
+        form.setHeight("310px");
+        form.setWidth("410px");
         form.setPosition(windowWidth / 2 - 200, windowHeight / 2 - 150);
         form.setModal(true);
 
@@ -123,7 +125,7 @@ public class MyUI extends UI {
         UI.getCurrent().addWindow(form);
       });
 
-      Button delBtn = new Button("Borrar");
+      Button delBtn = new Button("Borrar", VaadinIcons.TRASH);
       delBtn.addClickListener(click -> {
         int windowWidth = getPage().getBrowserWindowWidth();
         int windowHeight = getPage().getBrowserWindowHeight();
@@ -148,12 +150,15 @@ public class MyUI extends UI {
 
       horLayout.addComponents(editBtn, delBtn);
 
+      // Styles
+      editBtn.setStyleName("edit-btn");
+      delBtn.setStyleName("del-btn");
+
       return horLayout;
     });
 
     contactosGrid.setStyleName("contacts-grid");
     contactosGrid.setWidth("100%");
-    contactosGrid.setHeight("100%");
     contactosGrid.setRowHeight(40);
 
     verticalLayout.addComponents(hlHeader, contactosGrid);

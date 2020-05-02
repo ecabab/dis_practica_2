@@ -15,6 +15,25 @@ public class Alerta extends Window {
      */
     private static final long serialVersionUID = 1L;
 
+    public Alerta(String header, String mensaje) {
+        super(header);
+
+        VerticalLayout vLayout = new VerticalLayout();
+        Label msg = new Label(mensaje);
+
+        HorizontalLayout hLayout = new HorizontalLayout();
+        Button btnOp1 = new Button("Aceptar");
+        btnOp1.addClickListener(click -> {
+            close();
+        });
+        hLayout.addComponents(btnOp1);
+
+        vLayout.addComponents(msg, hLayout);
+
+        setContent(vLayout);
+
+    }
+
     public Alerta(String header, Agenda agenda, Contacto contacto) {
         super(header);
 
